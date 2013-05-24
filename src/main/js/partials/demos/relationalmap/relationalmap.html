@@ -1,0 +1,139 @@
+<div id="relationalMap" a-items="items" a-diagonal="diagonal" a-status-data="statusData"
+     class="albatross-relational-map" relational-map>
+</div>
+<div tabs>
+    <div pane heading="Code">
+        <div ng-include="codeSnippetId"></div>
+    </div>
+    <div pane heading="Documentation">
+        <h5>Configuration</h5>
+
+        <div items="docPage.configuration" code-doc></div>
+        <h5>Methods</h5>
+
+        <div items="docPage.methods" code-doc></div>
+        <h5>Events</h5>
+
+        <div items="docPage.events" code-doc></div>
+        <h5>CSS</h5>
+
+        <div items="docPage.css" code-doc></div>
+    </div>
+</div>
+
+<script type='text/ng-template' id="basicCode">
+ <pre>
+    var config = {
+        elementId : "relationalMap",
+        styles : {
+            itemDimension : 50
+        },
+        multiSelect : false,
+        diagonal : false,
+        data : {
+            xDataProvider : getDummyData(5, "A"),
+            yDataProvider : getDummyData(5, "M")
+        },
+    };
+
+    function getDummyData(count, title) {
+        var result = [];
+        for (var i = 0; i < count; i++) {
+            result.push({field : title + i, title : title + " " + i});
+        }
+        return result;
+    }
+    </pre>
+</script>
+
+<script type='text/ng-template' id="diagonalCode">
+ <pre>
+    var config = {
+        elementId : "relationalMap",
+        styles : {
+            itemDimension : 50
+        },
+        multiSelect : false,
+        diagonal : true,
+        data : {
+            xDataProvider : getDummyData(5, "A"),
+            yDataProvider : getDummyData(5, "M")
+        },
+    };
+
+    function getDummyData(count, title) {
+        var result = [];
+        for (var i = 0; i < count; i++) {
+            result.push({field : title + i, title : title + " " + i});
+        }
+        return result;
+    }
+    </pre>
+</script>
+
+<script  type='text/ng-template' id="apiCode">
+  <pre>
+    var config = {
+        elementId : "relationalMap",
+        styles : {
+            itemDimension : 50
+        },
+        multiSelect : false,
+        diagonal : false,
+        data : {
+            xDataProvider :getDummyData(5, "A"),
+            yDataProvider : getDummyData(5, "M")
+        }
+    };
+
+    var relMap = new albatross.relationalMap(config);
+
+    setInterval(function(){
+        relMap.updateStatusData(getRandomStatusData(config.data.xDataProvider, config.data.yDataProvider));
+    },2000);
+
+    function getDummyData(count, title) {
+        var result = [];
+        for (var i = 0; i < count; i++) {
+            result.push({field : title+ i, title : title +" "+ i});
+        }
+        return result;
+    }
+
+    function getRandomStatusData(xData, yData){
+        var result = {};
+        for (var i = 0; i < xData.length; i++) {
+            var xItem = xData[i];
+            for (var j = 0; j < yData.length; j++) {
+                var yItem = yData[j];
+                var obj = result[xItem.field] || {};
+                obj[yItem.field] = {};
+                obj[yItem.field].className = getRandomClass();
+                result[xItem.field] = obj;
+            }
+        }
+
+        function getRandomClass(){
+            var num = Math.floor(Math.random() * 6) + 1;
+            switch(num)
+            {
+                case 1:
+                    return "item-red";
+                    break;
+                case 2:
+                    return "item-green";
+                    break;
+                case 3:
+                    return "item-yellow";
+                    break;
+                case 4:
+                    return "item-orange";
+                    break;
+                default:
+                    return "item-grey";
+            }
+        }
+        return result;
+    }
+    </pre>
+</script>

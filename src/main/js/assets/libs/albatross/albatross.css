@@ -1,0 +1,63 @@
+/*
+ [Master Sheet]
+ * Creator     : junahaf
+ * Project     :
+ * Version     :
+ * URL         :
+ * Created     : 10/05/13
+ * Updated     : 10/05/13
+ * Primary Use : 
+*/
+
+/*-----------------------------------------------
+Table of contents
+1. Reset
+2. Typography
+3. Basic layout
+4. Widgets
+5. Media items
+6. Forms
+7. Media queries
+8. IE specific styles
+-------------------------------------------------*/
+/*-----------------------------------------------
+£Widgets
+-------------------------------------------------*/
+
+html,body{
+    height: 100%;
+}
+
+.a-main{
+    height: 500px;
+    width: 700px;
+    background: cover;
+}
+a-main-plot{
+    height: 400px;
+    width: 600px;
+}
+.a-relational-map-item{
+    width: 50px;
+    height: 50px;
+    background: yellow;
+    opacity: .5;
+    border: red 1px solid;
+    -moz-border-radius:5px;
+    border-radius: 5px;
+}
+.a-relational-map-item-disabled{
+    background: darkgrey;
+    border: black 1px solid;
+}
+.a-relational-map-item-selected{
+    background: #FFAB51;
+}
+.a-relational-map-x-axis{
+    font-size: 10pt;
+    text-align: center;
+}
+.a-relational-map-y-axis{
+    font-size: 10pt;
+    width: 30px;
+}

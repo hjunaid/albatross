@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="albatross">
+<head>
+    <title></title>
+    <link href="assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/libs/albatross/albatross.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
+    <!--<link href="assets/css/docs.css" rel="stylesheet">-->
+
+    <script src="assets/libs/jquery/jquery-1.9.1.min.js"></script>
+    <script src="assets/libs/albatross/albatross.js"></script>
+    <script src="assets/libs/angular/angular.min.js"></script>
+    <script src="assets/libs/angular/angular-bootstrap.js"></script>
+</head>
+<body ng-controller="MainController">
+<!--Main navigation aread-->
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <a class="brand" href="#">Albatross</a>
+        <ul class="nav">
+            <li class="active"><a href="">Demos</a></li>
+            <li class="disabled" tooltip="Work in progress"><a href="#">Download</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--Side bar and main content-->
+<div class="container-fluid height100">
+    <div class="row-fluid height100">
+        <div class="span2 height100 ">
+            <ul class="nav nav-list">
+                <li class="nav-header">Relational Map</li>
+                <li ng-class="{'active':sideBarActive('basic')}"><a href="#/demos/relationalmap/basic">Basic</a></li>
+                <li ng-class="{'active':sideBarActive('diagonal')}"><a
+                        href="#/demos/relationalmap/diagonal">Diagonal</a></li>
+                <li ng-class="{'active':sideBarActive('api')}"><a href="#/demos/relationalmap/api">API</a></li>
+                <li class="disabled" ng-class="{'active':sideBarActive('events')}"><a href="#/demos/relationalmap/events">Events</a></li>
+            </ul>
+        </div>
+        <div class="span9 height100">
+            <div ng-view class="height100 width100"></div>
+        </div>
+    </div>
+</div>
+<script src="app/app.js"></script>
+<script src="app/demos/relationalmap/basic/BasicRelationalMapCtrl.js"></script>
+<script src="app/demos/relationalmap/basic/DiagonalRelationalMapCtrl.js"></script>
+<script src="app/demos/relationalmap/basic/ApiRelationalMapCtrl.js"></script>
+<script src="app/model/relationalmap/DocumentationModel.js"></script>
+<script src="app/model/relationalmap/RelmapDocs.js"></script>
+<script src="app/directives/RelationalMap.js"></script>
+<script src="app/directives/CodeDoc.js"></script>
+<script src="app/mocks/MockFactory.js"></script>
+</body>
+</html>

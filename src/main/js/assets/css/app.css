@@ -1,0 +1,42 @@
+.albatross-relational-map{
+    display: block;
+    width: 100%;
+}
+.a-main{
+    height: 350px;
+}
+.height100{
+ height: 100%;
+}
+.width100{
+    width: 100%;
+}
+.item-red{
+  background:   #FA7961
+}
+.item-green{
+  background:   #0CA893
+}
+.item-yellow{
+  background:   #FAE36E
+}
+.item-grey{
+  /*background:   #3E3440*/
+}
+.item-orange{
+    background:   #FFAB51
+}
+
+.nav.nav-list{
+    width: 140px;
+}
+hr{
+    border-top: 1px solid darkgray;
+}
+.doc-item-name{
+    display: inline-block;
+}
+.doc-item-type{
+    display: inline-block;
+    padding-left: 10px;
+}
