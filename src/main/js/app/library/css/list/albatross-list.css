@@ -4,3 +4,12 @@
     overflow: auto;
     list-style-type: none;
 }
+.a-list-item-selected{
+   background: orangered;
+}
+.a-list-item-enabled{
+   color: black;
+}
+.a-list-item-disabled{
+  color: lightgrey;
+}

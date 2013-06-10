@@ -4,6 +4,9 @@
 (function InfiniteList(window) {
     var albatross = {};
     albatross.infiniteList = function (config) {
+        this._STYLE_ITEM_SELECTED = 'a-list-item-selected';
+        this._STYLE_ITEM_ENABLED = 'a-list-item-enabled';
+        this._STYLE_ITEM_DISABLED = 'a-list-item-disabled';
         this.config = config;
         this.checkConfig();
         this.createList();
@@ -16,10 +19,28 @@
         this.updateView(0, 20);
     }
 
-    albatross.infiniteList.prototype.addListeners= function(){
-        this.element.addEventListener('click',function(e){
+    albatross.infiniteList.prototype.addListeners = function () {
+        var self = this;
+        if (this.element.addEventListener) {
+            this.element.addEventListener('click', clickHandler, false);
+        } else {
+            this.element.attachEvent('onclick', clickHandler);
+        }
+        function clickHandler(e) {
+            var target = e.srcElement || e.target;
+            if (target.className.search(self._STYLE_ITEM_DISABLED) != -1) {
+                return;//return if item is disabled
+            }
+            if (e.shiftKey && !!self.selectedItem) {
 
-        },false)
+            } else {
+                if (self.selectedItem) {
+                self.selectedItem.className = self.selectedItem.className.replace(self._STYLE_ITEM_SELECTED, '');
+                }
+                target.className = target.className +' '+ self._STYLE_ITEM_SELECTED;
+                self.selectedItem = target;
+            }
+        }
     }
     albatross.infiniteList.prototype.updateView = function (fromIdx, toIdx) {
         var data = this.config.data.slice(fromIdx, toIdx), domBatch = [], str = '';
@@ -34,10 +55,10 @@
     }
 
     albatross.infiniteList.prototype.createElement = function (dataItem) {
-        return '<li class="' + this.getClass(dataItem) + '">' + this.getText(dataItem) + '</li>' ;
+        return '<li class="' + this.getClass(dataItem) + '">' + this.getText(dataItem) + '</li>';
     }
     albatross.infiniteList.prototype.getClass = function (dataItem) {
-        return dataItem[this.config.schema.enabled] ? 'a-enabled' : 'a-disabled';
+        return dataItem[this.config.schema.enabled] ? this._STYLE_ITEM_ENABLED : this._STYLE_ITEM_DISABLED;
     }
     albatross.infiniteList.prototype.getText = function (dataItem) {
         return dataItem[this.config.schema.name];
