@@ -7,6 +7,10 @@ angular.module('albatross', ['ui.bootstrap','ui.bootstrap.tooltip']).config(func
         when('/demos/relationalmap/basic', {controller:'BasicRelationalMapCtrl', templateUrl:'partials/demos/relationalmap/relationalmap.html'}).
         when('/demos/relationalmap/diagonal', {controller:'DiagonalRelationalMapCtrl', templateUrl:'partials/demos/relationalmap/relationalmap.html'}).
         when('/demos/relationalmap/api', {controller:'ApiRelationalMapCtrl', templateUrl:'partials/demos/relationalmap/relationalmap.html'}).
+        when('/download', { templateUrl:'partials/twitter_follow.html'}).
+        when('/redirect', { resolve:{ delay:function(){
+            window.location.href ="http://albatrosssoft.appspot.com";
+        }}}).
         otherwise({redirectTo:'/demos/relationalmap/basic'});
 });
 angular.module('albatross').controller('MainController', ['$scope','$rootScope','$location',function($scope, $rootScope,$location){

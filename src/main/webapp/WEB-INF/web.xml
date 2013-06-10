@@ -16,9 +16,6 @@
         <mime-type>text/plain</mime-type>
     </mime-mapping>
 
-
-
-
     <!-- Make the servlet respond to all requests. -->
     <session-config>
         <session-timeout>120</session-timeout>
